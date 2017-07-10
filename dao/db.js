@@ -32,38 +32,35 @@ var connectToMongo = function() {
 
 var Schema = mongoose.Schema;
 
-var scheme = new Schema({
-    schemeName: { type: String, require: true },
-    timeStamp: { type: Date, require: true },
-    isActive: { type: Boolean, default: true }
-});
-
-var sales = new Schema({
-    salesName: { type: String, require: true },
-    companyName: { type: String, require: true },
-    mobileNumber: { type: String, require: true },
-    emailId: { type: String, require: true },
-    pinCode: { type: String, require: true },
-    street: { type: String, require: true },
-    area: { type: String, require: true },
+var events = new Schema({
+    id: { type: String, require: true },
+    name: { type: String, require: true },
     city: { type: String, require: true },
-    state: { type: String, require: true },
     country: { type: String, require: true },
-    password: { type: String },
-    salesSALT: { type: String },
-    isEmailIdVerified: { type: Boolean, default: false },
-    emailToken: { type: String },
-    salesCode: { type: String, require: true },
-    businessType: { type: String },
-    isActive: { type: Boolean, default: true },
-    timeStamp: { type: Date, require: true },
-    isFirstLogin: { type: Boolean, default: true },
-    role: { type: String, default: "sales" }
+    place: { type: String, require: true },
+    zip: { type: String, require: true },
+    latitude: { type: String, require: true },
+    longitude: { type: String, require: true },
+    fan_count: { type: String, require: true },
+    checkins: { type: String, require: true },
+    about: { type: String },
+    picture: { type: String },
+    category_list: { type: String},
+    email: { type: String },
+    is_verified: { type: String, require: true },
+    price_range: { type: String },
+    phone: { type: Boolean, default: true },
+    create_date: { type: Date, require: true },
+    update_date: { type: Date, require: true }
 });
+events.index({name: "text", city: "text", country: "text", about: "text"});
+
 
 // Exports modules.
-module.exports.scheme = mongoose.model('scheme', scheme, 'scheme');
-module.exports.sales = mongoose.model('sales', sales, 'sales');
+
+module.exports.events = mongoose.model('events', events, 'events');
+
+
 
 //Mongoose Connection
 module.exports.db = mongoose.connection;

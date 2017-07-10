@@ -60,7 +60,7 @@ function normalizePort(val) {
 
 function onError(error) {
     if (error.syscall !== 'listen') {
-        logger.error(JSON.stringify(error));
+        console.error(JSON.stringify(error));
         throw error;
     }
 
@@ -71,15 +71,15 @@ function onError(error) {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
-            logger.error(bind + ' requires elevated privileges');
+            console.error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            logger.error(bind + ' is already in use');
+            console.error(bind + ' is already in use');
             process.exit(1);
             break;
         default:
-            logger.error(error);
+            console.error(error);
             throw error;
     }
 }
@@ -97,9 +97,9 @@ function onListening() {
 
 //Used while sticky session is on
 process.on('uncaughtException', function(err) {
-    logger.error('whoops! There was an uncaught error: ' +  err.code);
+    console.error('whoops! There was an uncaught error: ' +  err.code);
     if (err.syscall !== 'listen') {
-        logger.error(JSON.stringify(err));
+        console.error(JSON.stringify(err));
         throw err;
     }
 
@@ -109,15 +109,15 @@ process.on('uncaughtException', function(err) {
 
     switch (err.code) {
         case 'EACCES':
-            logger.error(bind + ' requires elevated privileges');
+            console.error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            logger.error(bind + ' is already in use');
+            console.error(bind + ' is already in use');
             process.exit(1);
             break;
         default:
-            logger.error(err);
+            console.error(err);
             throw err;
     }
     // do a graceful shutdown,
