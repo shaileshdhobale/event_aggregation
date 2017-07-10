@@ -1,0 +1,12 @@
+{
+    "environmentType": "local",
+    "envConfig": {
+        "local": {
+            "port": 3000,
+            "securePort": 443,
+            "dbConnectionString": "mongodb://127.0.0.1/Event",
+            "logLevel": "DEBUG"
+
+        }
+    }
+}
