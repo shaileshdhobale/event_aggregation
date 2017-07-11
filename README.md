@@ -7,8 +7,9 @@ Application to search data from database for particular fields of Events collect
 2. Search text with limitation
 3. API to upload places_1.csv (upload only same file)
 
-# One scheduler is there which will read the the uploads directory and read all the files and store the data of file in MongoDB.
+One scheduler is there which will read the the uploads directory and read all the files and store the data of file in MongoDB.
 
+Start the server using node bin/www
 
 
 
