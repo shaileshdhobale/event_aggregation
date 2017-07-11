@@ -32,6 +32,19 @@ var searchEvent = function(searchString, callback) {
     })
 };
 
+var searchEventByLimit = function(queryObj, callback) {
+    var METHOD_NAME = "[searchEventByLimit] ";
+    model.events.find({$text: {$search: queryObj.text}}, {score: {$meta: "textScore"}}).sort({score:{$meta:"textScore"}}).limit(parseInt(queryObj.limit)).skip(parseInt(queryObj.skipRecord)).exec(function(error, result) {
+        if(error) {
+            console.log(METHOD_NAME + error);
+            callback(error, null)
+        } else {
+            callback(null, result);
+        }
+    })
+};
+//Exports
 module.exports.insertEventData = insertEventData;
 module.exports.searchEvent = searchEvent;
+module.exports.searchEventByLimit = searchEventByLimit;
 

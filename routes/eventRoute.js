@@ -17,8 +17,10 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
+
 router.get('/event/search', eventController.searchEvent);
-router.get('/event/uploadFile',  eventController.uploadEventDataCSVFormat);
+router.get('/event/searchByLimit', eventController.searchEventByLimit);
+router.post('/event/uploadFile', upload.any(), eventController.uploadEventDataCSVFormat);
 
 
 //exports
